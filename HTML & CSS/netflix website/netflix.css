@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+html,
+body {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  /* position: absolute; */
+  overflow: hidden;
+  background-size: cover;
+  background-image: linear-gradient(
+      to top,
+      rgb(0 0 0) 0,
+      rgb(0 0 0 / 56%) 60%,
+      rgba(0, 0, 0, 0.8) 100%
+    ),
+    url(/assets/images/bg.jpg);
+  /* background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%); */
+  background-repeat: no-repeat;
+  /* background-blend-mode: color; */
+  height: 700px;
+  background-color: #0000008a;
+  width: 100%;
+  background-position: center;
+}
+nav {
+  justify-content: space-between;
+  display: flex;
+  width: 1028.16px;
+  padding: 24px 0;
+  margin: auto;
+  align-items: center;
+}
+nav > img {
+  width: 148px;
+}
+.nav-in {
+  display: flex;
+  gap: 23px;
+}
+.nav-in-in {
+  position: relative;
+}
+.nav-in-in-font {
+  font-size: 1rem;
+  font-weight: 500;
+}
+select#lang-picker {
+  color: white;
+  border-radius: 4px;
+  border: 0.1% solid white;
+  background: rgba(0, 0, 0, 0.521);
+  padding: 6px 10px 6px 42px;
+}
+select#lang-picker option {
+  background-color: white;
+  color: black;
+}
+i.ri-translate-2 {
+  color: white;
+  position: absolute;
+  left: 16.3%;
+  top: 27.8%;
+}
+
+nav button {
+  background-color: red;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+}
+nav button:hover {
+  background-color: #d70d0d;
+  cursor: pointer;
+}
+.header-elem-text {
+  align-items: center;
+  gap: 20px;
+  margin-top: 192px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.header-elem-text h1 {
+  font-size: 2.9rem;
+  font-weight: 800;
+  font-family: "Open Sans", sans-serif;
+}
+.header-elem-text h2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+}
+.header-elem-text h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+}
+.header-elem-email {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 7px;
+}
+
+.header-elem-email input {
+  font-family: "Open Sans", sans-serif;
+  padding: 16px 225px 16px 12px;
+  font-size: 15px;
+  background: #0000005e;
+  border-radius: 4px;
+  border: 1px solid #6a6a6a;
+  color: white;
+  font-weight: 600;
+}
+.header-elem-email button {
+  font-family: "Open Sans", sans-serif;
+  padding: 12px 17px 12px 15px;
+  font-size: 20px;
+  background: red;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  font-weight: 600;
+}
+.header-elem-email button:hover {
+  background-color: #d70d0d;
+  cursor: pointer;
+}
+.main1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 529.047px;
+  border-top: 8px solid #262626;
+}
+.main1-in {
+  align-items: center;
+  display: flex;
+  height: 385.047px;
+  width: 78%;
+  color: white;
+}
+.main1-in-text {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.main1-in-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+.main1-in-text h2 {
+  line-height: 31px;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.tv1 {
+  position: relative;
+  height: 381px;
+  width: 508px;
+}
+.tv1 img {
+  position: relative;
+  z-index: 1;
+  width: 508px;
+}
+.tv1 video {
+  z-index: -1;
+}
+.tv1-video {
+  overflow: hidden;
+  position: relative;
+  height: 211px;
+  width: 371px;
+  top: -81%;
+  left: 13%;
+}
+.tv1-box {
+  justify-content: space-between;
+  border-radius: 12px;
+  align-items: center;
+  display: flex;
+  z-index: 1;
+  background-color: #000000f0;
+  top: 66%;
+  left: 22%;
+  position: absolute;
+  width: 254px;
+  height: 84px;
+  padding: 8px 12px;
+  border: 2px solid grey;
+}
+.tv1-box img:first-child {
+  height: 80px;
+  width: auto;
+}
+.tv1-box-gif {
+  height: 60px;
+  width: 48px;
+  background-image: url(/assets/images/phone1-anime.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.tv1-box h3 {
+  font-size: 16px;
+}
+.tv1-box h4 {
+  font-weight: 500;
+  color: #3c64ff;
+  font-size: 13px;
+}
+
+.tv2-video {
+  overflow: hidden;
+  position: relative;
+  height: 218px;
+  width: 321px;
+  top: -97%;
+  left: 18%;
+}
+.main4-in-text {
+  width: 497px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.main4-in-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+.main4-in-text h2 {
+  line-height: 31px;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.main3-in-text {
+  width: 531px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.main3-in-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+.main3-in-text h2 {
+  line-height: 31px;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.main2 {
+  display: flex;
+  justify-content: center;
+  height: 946.047px;
+  border-top: 8px solid #262626;
+}
+.main2-in {
+  height: 385.047px;
+  margin-top: 70px;
+  width: 78%;
+  color: white;
+}
+.main2-in > h1 {
+  font-weight: 800;
+  text-align: center;
+  font-size: 48px;
+}
+.questions {
+  margin: 36px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+}
+.questions button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  font-size: 24px;
+  background-color: #262626;
+  color: white;
+  border: none;
+}
+.questions button:hover {
+  background-color: #474747;
+  cursor: pointer;
+}
+
+.main2-in-input {
+  margin: 53px 0px 76px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.main2-in-input h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+}
+footer {
+  display: flex;
+  font-weight: 600;
+  color: #bbbbbb;
+  justify-content: center;
+  /* text-align: center; */
+  height: 57px;
+  align-items: center;
+  border-top: 8px solid #262626;
+  font-size: 14px;
+}

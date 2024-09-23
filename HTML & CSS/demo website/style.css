@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+html,
+body {
+    background-color: #f3f2ff;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+}
+
+.font-600 {
+    font-weight: 600;
+}
+
+nav {
+    margin: 0 auto;
+    width: 91%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav2 {
+    margin-top: 25px;
+    gap: 18px;
+    max-width: 279px;
+    display: flex;
+}
+
+.nav2>span {
+    letter-spacing: -1px;
+    font-weight: 900;
+}
+
+#nav3 {
+    display: flex;
+}
+
+#nav3 li {
+    list-style: none;
+    margin: 0 18px;
+}
+
+#nav3>li:last-child {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+i.ri-arrow-right-up-line {
+    font-size: 22px;
+}
+
+.section1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 91%;
+    height: 400px;
+    margin: 85px auto;
+}
+
+.section1 h3 {
+    font-weight: 500;
+    font-size: larger;
+}
+
+.section1 h1 {
+    word-spacing: 2px;
+    letter-spacing: -7px;
+    line-height: 107px;
+    font-size: 117px;
+    font-weight: 400;
+}
+
+.section2 {
+    display: flex;
+    width: 91%;
+    height: 40px;
+    margin: 85px auto 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section2-2 {
+    gap: 18px;
+    max-width: 279px;
+    display: flex;
+}
+
+.section2-2>span {
+    letter-spacing: -1px;
+    font-weight: 900;
+}
+
+.section3 {
+    display: flex;
+    width: 91%;
+    height: 795px;
+    margin: 20px auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.s3-col img:nth-child(1) {
+    border-radius: 14px;
+    width: 525px;
+    height: 700px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.s3-col {
+    gap: 17px;
+    display: flex;
+    flex-direction: column;
+}
+
+.s3-row {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.s3-col-in {
+    display: flex;
+    flex-direction: column;
+}
+
+.s3-col-in>h3 {
+    font-size: 24px;
+}
+
+.s3-col-in>h4 {
+    font-weight: 400;
+    color: grey;
+    font-size: 13px;
+}
+
+.b1 {
+    padding: 10px 21px;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.ri-arrow-right-line {
+    font-size: 20px;
+}
+
+.b1:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

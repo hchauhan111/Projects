@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Job Application <small>(Web)</small></h1>
+    <form action="form.php">
+      <div id="row1">
+        <div class="row1-in">
+          <span>First Name</span>
+          <input type="text" size="42px" />
+        </div>
+        <div class="row1-in">
+          <span>Last Name</span>
+          <input type="text" size="42px" />
+        </div>
+      </div>
+      <br /><br />
+
+      <div id="row2">
+        <div class="row2-in">
+          <span>Email</span>
+          <input type="email" size="42px" />
+        </div>
+        <div class="row2-in">
+          <span>Job Role</span>
+          <select name="job" id="job">
+            <option value="null">Select Job Role</option>
+
+            <option value="hr">Human Resource (HR)</option>
+
+            <option value="admin">Administrative</option>
+
+            <option value="data analyst">Data Analyst</option>
+          </select>
+        </div>
+      </div>
+      <br /><br />
+
+      <div id="row3">
+        <div class="row3-in">
+          <span>Address</span>
+          <textarea name="address" id="address" rows="5"></textarea>
+        </div>
+      </div>
+      <br /><br />
+
+      <div id="row4">
+        <div class="row4-in">
+          <span>City</span>
+          <input type="text" size="42px" />
+        </div>
+        <div class="row4-in">
+          <span>Pincode</span>
+          <input type="text" size="42px" />
+        </div>
+      </div>
+      <br /><br />
+
+      <div id="row5">
+        <div class="row5-in">
+          <span>First Name</span>
+          <input type="date" size="42px" />
+        </div>
+        <div class="row5-in">
+          <span>Last Name</span>
+          <input type="file" size="42px" />
+        </div>
+      </div>
+      <br /><br /><br /><br />
+      <div id="submit">
+        <input type="submit" value="Apply Now" />
+      </div>
+    </form>
+  </body>
+</html>

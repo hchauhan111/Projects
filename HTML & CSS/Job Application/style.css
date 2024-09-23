@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+body > h1:first-child {
+  width: 90%;
+  font-size: 66px;
+  font-weight: 700;
+  margin: 39px auto;
+}
+body > h1:first-child small {
+  font-size: 39px;
+  font-weight: 500;
+  color: #04175a;
+}
+form {
+  width: 90%;
+  margin: auto;
+}
+#row1 {
+  justify-content: space-between;
+  display: flex;
+}
+.row1-in {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.row1-in span {
+  font-size: 16px;
+  font-weight: 600;
+}
+.row1-in input {
+  border-radius: 6px;
+  border: 1px solid black;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 17px 11px;
+}
+
+#row2 {
+  justify-content: space-between;
+  display: flex;
+}
+.row2-in {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.row2-in span {
+  font-size: 16px;
+  font-weight: 600;
+}
+.row2-in input {
+  border-radius: 6px;
+  border: 1px solid black;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 17px 11px;
+}
+.row2-in select {
+  border-radius: 6px;
+  border: 1px solid black;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 17px 6px;
+  width: 344px;
+}
+
+.row3-in {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.row3-in span {
+  font-size: 16px;
+  font-weight: 600;
+}
+.row3-in textarea {
+  border-radius: 6px;
+  border: 1px solid black;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 17px 11px;
+}
+#row4 {
+  justify-content: space-between;
+  display: flex;
+}
+.row4-in {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.row4-in span {
+  font-size: 16px;
+  font-weight: 600;
+}
+.row4-in input {
+  border-radius: 6px;
+  border: 1px solid black;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 17px 11px;
+}
+#row5 {
+  justify-content: space-between;
+  display: flex;
+}
+.row5-in {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.row5-in span {
+  font-size: 16px;
+  font-weight: 600;
+}
+.row5-in input {
+  border-radius: 6px;
+  border: 1px solid black;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 17px 11px;
+  width: 322px;
+}
+form > #submit input:last-child {
+  padding: 12px 20px;
+  margin-bottom: 23px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+#submit {
+  width: 100%;
+  text-align: end;
+}
+
+@media (max-width: 500px) {
+  body > h1:first-child {
+    width: 90%;
+    font-size: 59px;
+    font-weight: 700;
+    margin: 39px auto 57px;
+  }
+  #row1 {
+    display: flex;
+    gap: 34px;
+    flex-direction: column;
+  }
+  #row2 {
+    gap: 34px;
+    display: flex;
+    flex-direction: column;
+  }
+  #row4 {
+    gap: 34px;
+    display: flex;
+    flex-direction: column;
+  }
+  #row5 {
+    gap: 34px;
+    display: flex;
+    flex-direction: column;
+  }
+}

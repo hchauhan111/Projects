@@ -1,0 +1,311 @@
+/* boiler plate */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --bg: white;
+  --txt: black;
+  --txt-sec: grey;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+  border: none;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+button {
+  cursor: pointer;
+}
+
+/* main code */
+header {
+  z-index: 1000;
+  background-color: var(--bg);
+  width: 100%;
+  height: 56px;
+  position: fixed;
+  top: 0px;
+  color: var(--txt);
+}
+nav {
+  background: var(--bg);
+  width: 100%;
+  height: 152%;
+  display: flex;
+  justify-content: space-between;
+  gap: 79px;
+  align-items: center;
+  padding: 0px 30px 0 18px;
+}
+/* nav 1 */
+.nav1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav1 button {
+  padding: 5px 9px;
+  font-size: 1.4rem;
+}
+.bg-change {
+  background-color: transparent;
+  border-radius: 50%;
+}
+.bg-change:hover {
+  background-color: #ccc;
+}
+.nav1 img {
+  width: 90px;
+}
+/* nav 2 */
+.nav2 {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+.search {
+  align-items: center;
+  width: 95%;
+  display: flex;
+}
+.search input {
+  width: 557px;
+  font-size: 0.85rem;
+  border: 1px solid #ccc;
+  border-top-left-radius: 35px;
+  border-bottom-left-radius: 35px;
+  padding: 10px 0 10px 12px;
+}
+.search button {
+  background-color: rgb(248, 248, 248);
+  border: 1px solid #ccc;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+  padding: 4px 23px 4px 18px;
+  font-size: 1.4rem;
+  border-left: none;
+}
+.search button:hover {
+  background-color: #efefef;
+}
+.nav2 > button {
+  background-color: rgb(248, 248, 248);
+  padding: 5px 10px;
+  font-size: 1.4rem;
+}
+
+/* nav3 */
+.nav3 {
+  display: flex;
+  gap: 17px;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav3-same {
+  padding: 5px 9px;
+  font-size: 1.4rem;
+}
+.avatar {
+  background-color: rgb(248, 248, 248);
+  padding: 20px;
+  border-radius: 50%;
+  background-image: url(/assets/images/himanshu-bro.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+/* main */
+main {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+/* vertical */
+.bg-change2 {
+  background-color: transparent;
+}
+.bg-change2:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.vertical {
+  position: sticky;
+  top: 85px;
+  margin-top: 85px;
+  width: 77px;
+  height: calc(100% - 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.vertical a {
+  width: 100%;
+}
+
+.vertical-in {
+  border-radius: 10px;
+  gap: 3px;
+  padding: 14.5px 0;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.vertical-in i {
+  font-size: 1.4rem;
+}
+.vertical-in p {
+  font-size: 0.65rem;
+  font-weight: 400;
+}
+
+/* slider */
+.main-in {
+  width: calc(100% - 77px);
+  padding: 62px 15px 15px 15px;
+}
+.slider {
+  z-index: 1;
+  align-items: center;
+  background-color: var(--bg);
+  position: sticky;
+  top: 71px;
+  gap: 12px;
+  display: flex;
+  height: 72px;
+  overflow-x: scroll;
+}
+.slider::-webkit-scrollbar {
+  display: none;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
+  min-width: fit-content;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.btn:hover:not(:first-child) {
+  background-color: #ccc;
+}
+.slider .btn:first-child {
+  background: var(--txt);
+  color: var(--bg);
+}
+.slider button:last-child {
+  background-color: var(--bg);
+  position: fixed;
+  right: 7px;
+  top: 88px;
+  padding: 3px 7px;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.slider button:last-child:hover {
+  background-color: #ccc;
+}
+/* video */
+.video-grid {
+  position: relative;
+  z-index: 0;
+  gap: 51px 15px;
+  margin: 21px 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.video {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+}
+.thumb {
+  position: relative;
+  width: 100%;
+}
+.thumb img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+}
+.thumb .time {
+  color: white;
+  position: absolute;
+  right: 7px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  min-width: fit-content;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+.text {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.title h2 {
+  overflow: hidden;
+  font-size: 1.05rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  height: 52px;
+}
+.title h3 {
+  align-items: center;
+  gap: 4px;
+  display: flex;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: rgb(96, 96, 96);
+}
+.avatar2 {
+  width: 75px;
+  height: 35px;
+  background-color: rgb(248, 248, 248);
+  border-radius: 50%;
+  background-image: url(/assets/images/himanshu-bro.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.three-dot {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 0.49rem;
+}
