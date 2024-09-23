@@ -1,0 +1,128 @@
+/* Importing a modern font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* App Content Box */
+.app-content {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.app-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  resize: none;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #f5f5f5;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #5a67d8;
+}
+
+/* Voice Selection and Button Styles */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.voice-control {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.voice-control label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+#voice-select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  width: 100%;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+#voice-select:focus {
+  border-color: #5a67d8;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #5a67d8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #434190;
+}
+
+/* Footer */
+footer {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+footer p {
+  text-align: center;
+  margin: 0;
+}

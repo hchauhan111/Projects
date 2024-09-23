@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+    <link
+      href="https://fonts.cdnfonts.com/css/helvetica-neue-55"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="slider">
+      <div class="slides">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <img src="/images/img1.jpg" alt="Image 1" />
+          <div class="caption">First Image</div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+          <img src="/images/img2.jpg" alt="Image 2" />
+          <div class="caption">Second Image</div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="/images/img3.jpg" alt="Image 3" />
+          <div class="caption">Third Image</div>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <a class="prev" onclick="plusSlide(-1)"><i class="arrow left"></i></a>
+      <a class="next" onclick="plusSlide(1)"><i class="arrow right"></i></a>
+
+      <!-- Dots (for navigation) -->
+      <div class="dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
