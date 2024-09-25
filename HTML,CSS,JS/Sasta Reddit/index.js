@@ -9,7 +9,7 @@ searchForm.addEventListener("submit", onSearch);
 function onSearch(e) {
   e.preventDefault();
 
-  let searchInputValue = searchInput.gitvalue.trim();
+  let searchInputValue = searchInput.value.trim();
   let limitValue = limit.value;
   let sortValue = sort.value;
 
