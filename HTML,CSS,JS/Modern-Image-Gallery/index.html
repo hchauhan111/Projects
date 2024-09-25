@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Image Gallery</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="gallery-container">
+      <div class="gallery">
+        <figure>
+          <img src="img/img1.jpg" alt="Image 1" class="gallery-img" />
+          <figcaption>Image Caption 1</figcaption>
+        </figure>
+        <figure>
+          <img src="img/img2.jpg" alt="Image 2" class="gallery-img" />
+          <figcaption>Image Caption 2</figcaption>
+        </figure>
+        <figure>
+          <img src="img/img3.jpg" alt="Image 3" class="gallery-img" />
+          <figcaption>Image Caption 3</figcaption>
+        </figure>
+        <figure>
+          <img src="img/img4.jpg" alt="Image 4" class="gallery-img" />
+          <figcaption>Image Caption 4</figcaption>
+        </figure>
+        <figure>
+          <img src="img/img5.jpg" alt="Image 5" class="gallery-img" />
+          <figcaption>Image Caption 5</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" />
+      <div class="caption" id="lightbox-caption"></div>
+      <a class="prev" id="prev">&#10094;</a>
+      <a class="next" id="next">&#10095;</a>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
