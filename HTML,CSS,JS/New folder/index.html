@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TikTok</title>
+    <link
+      rel="shortcut icon"
+      href="/img/logo_144c91a.ico"
+      type="image/x-icon"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="success">You will be notified when website will launch.</div>
+    <div class="container">
+      <img src="/img/logo_144c91a.png" style="width: 11vw" alt="" />
+      <h1>TikTok Launching Soon!</h1>
+      <!-- <p>Our new website is on the way, and it's going to be awesome!</p> -->
+
+      <!-- Countdown Timer -->
+      <div id="countdown">
+        <div class="time-box">
+          <span id="days"></span>
+          <span class="label">Days</span>
+        </div>
+        <div class="time-box">
+          <span id="hours"></span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="time-box">
+          <span id="minutes"></span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="time-box">
+          <span id="seconds"></span>
+          <span class="label">Seconds</span>
+        </div>
+      </div>
+
+      <!-- Subscribe Section -->
+      <form class="subscribe">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          id="email"
+          required
+        />
+        <button id="notify-btn" type="submit">Notify Me</button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
