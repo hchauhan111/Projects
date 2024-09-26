@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Rating Table</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Font Awesome CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="error">
+      <strong>Error!</strong> Something went wrong. Please try again.
+    </div>
+    <div class="container">
+      <h2>Star Ratings</h2>
+      <div class="form">
+        <select id="productSelect">
+          <option value="" disabled selected>Select Product</option>
+          <option value="Sony 4k TV">Sony 4k TV</option>
+          <option value="Samsung 4k TV">Samsung 4k TV</option>
+          <option value="Vizio 4k TV">Vizio 4k TV</option>
+          <option value="Panasonic 4k TV">Panasonic 4k TV</option>
+          <option value="Phillips 4k TV">Phillips 4k TV</option>
+        </select>
+        <input
+          type="number"
+          id="ratingInput"
+          placeholder="Rate 1 - 5"
+          min="1"
+          max="5"
+        />
+        <button id="rateButton">Submit Rating</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>4k Televisions</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody id="productTable">
+          <tr>
+            <td>Sony 4k TV</td>
+            <td>
+              <span class="stars" data-rating="4.7"></span>
+              <span class="numeric-rating">4.7</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Samsung 4k TV</td>
+            <td>
+              <span class="stars" data-rating="3.3"></span>
+              <span class="numeric-rating">3.3</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Vizio 4k TV</td>
+            <td>
+              <span class="stars" data-rating="1.9"></span>
+              <span class="numeric-rating">1.9</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Panasonic 4k TV</td>
+            <td>
+              <span class="stars" data-rating="4.5"></span>
+              <span class="numeric-rating">4.5</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Phillips 4k TV</td>
+            <td>
+              <span class="stars" data-rating="4.74"></span>
+              <span class="numeric-rating">4.74</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
