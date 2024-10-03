@@ -22,7 +22,7 @@ subscribeForm.addEventListener("submit", (e) => {
 // Countdown functionality that updates the time remaining every second
 const countDown = setInterval(() => {
   let todayDate = new Date();
-  const launchDate = new Date("2024-10-26");
+  const launchDate = new Date("2025-10-23");
 
   let timeDifference = launchDate - todayDate;
 
