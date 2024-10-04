@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background: linear-gradient(135deg, #6a89cc, #3b3b98);
+  color: #fff;
+  display: flex;
+  font-family: "Muli", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.alert {
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  position: relative;
+  display: none;
+}
+.error {
+  background-color: #bb2124;
+  color: white;
+}
+.success {
+  background-color: #22bb33;
+  color: white;
+}
+.alert::after {
+  content: "";
+  width: 0;
+  background-color: #ccc;
+  height: 2px;
+  display: block;
+  transform: translate(-20px, 20px);
+  animation: loading 3s linear 1 forwards;
+}
+
+@keyframes loading {
+  from {
+    width: 0;
+    padding: 0;
+  }
+  to {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+h2 {
+  margin: 15px 0;
+  font-size: 28px;
+  text-align: center;
+  color: #f5f5f5;
+}
+
+.container {
+  background-color: #23235b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 12px;
+  width: 350px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.result-container {
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  height: 50px;
+  width: 100%;
+}
+
+.result-container #result {
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 13px;
+}
+
+.result-container .btn {
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 40px;
+  width: 40px;
+  background: transparent;
+  border: none;
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
+.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.setting label {
+  font-size: 18px;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+input[type="number"] {
+  width: 50px;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  text-align: center;
+}
+
+.btn {
+  background-color: #6a89cc;
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3b3b98;
+}
+
+.btn-large {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .result-container {
+    font-size: 9.46px;
+  }
+}
+
+/* Spinner styling */
+.spinner {
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top: 6px solid #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 20%;
+  left: 45%;
+}
+
+/* Keyframes for the spin animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hidden class to toggle visibility */
+.hidden {
+  display: none;
+}
