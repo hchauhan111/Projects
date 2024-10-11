@@ -25,10 +25,12 @@ class Boundary {
 class Player {
   constructor({ position }) {
     this.position = position;
-    this.radius = 15;
+    this.radius = 17;
     this.speed = 4;
     this.dx = 0;
     this.dy = 0;
+    this.nextDx = 0;
+    this.nextDy = 0;
   }
 
   draw() {
@@ -39,24 +41,49 @@ class Player {
     cxt.closePath();
   }
 
-  update = () => {
-    this.draw();
-    this.move();
-  };
+  collisionDetection({ dx, dy }) {
+    let isCollidingWithWalls = false;
+    boundaries.forEach((boundary) => {
+      if (
+        this.position.x + this.radius + dx >= boundary.position.x &&
+        this.position.x - this.radius + dx <=
+          boundary.position.x + boundary.width &&
+        this.position.y + this.radius + dy >= boundary.position.y &&
+        this.position.y - this.radius + dy <=
+          boundary.position.y + boundary.height
+      ) {
+        isCollidingWithWalls = true;
+      }
+    });
+    return isCollidingWithWalls;
+  }
 
   move() {
-    this.position.x += this.dx;
-    this.position.y += this.dy;
+    if (!this.collisionDetection({ dx: this.nextDx, dy: this.nextDy })) {
+      this.dx = this.nextDx;
+      this.dy = this.nextDy;
+    }
+    if (!this.collisionDetection({ dx: this.dx, dy: this.dy })) {
+      this.position.x += this.dx;
+      this.position.y += this.dy;
+    }
+  }
+
+  update() {
+    this.draw();
+    this.move();
   }
 }
 
 const map = [
-  ["-", "-", "-", "-", "-", "-"],
-  ["-", " ", " ", " ", " ", "-"],
-  ["-", " ", "-", "-", " ", "-"],
-  ["-", " ", " ", " ", " ", "-"],
-  ["-", "-", "-", "-", "-", "-"],
+  ["-", "-", "-", "-", "-", "-", "-"],
+  ["-", " ", " ", " ", " ", " ", "-"],
+  ["-", " ", "-", " ", "-", " ", "-"],
+  ["-", " ", " ", " ", " ", " ", "-"],
+  ["-", "-", "-", "-", "-", "-", "-"],
 ];
+
+let boundaries = [];
 
 function drawMap() {
   map.forEach((row, i) => {
@@ -69,6 +96,7 @@ function drawMap() {
               y: Boundary.height * i,
             },
           });
+          boundaries.push(boundary);
           boundary.draw();
           break;
       }
@@ -94,31 +122,18 @@ mainAnimation();
 
 function onKeydown(e) {
   if (e.key === "ArrowRight") {
-    p1.dx = p1.speed;
-    p1.dy = 0;
+    p1.nextDx = p1.speed;
+    p1.nextDy = 0;
   } else if (e.key === "ArrowLeft") {
-    p1.dx = -p1.speed;
-    p1.dy = 0;
+    p1.nextDx = -p1.speed;
+    p1.nextDy = 0;
   } else if (e.key === "ArrowUp") {
-    p1.dy = -p1.speed;
-    p1.dx = 0;
+    p1.nextDy = -p1.speed;
+    p1.nextDx = 0;
   } else if (e.key === "ArrowDown") {
-    p1.dy = p1.speed;
-    p1.dx = 0;
-  }
-}
-
-function onKeyup(e) {
-  if (
-    e.key === "ArrowRight" ||
-    e.key === "ArrowLeft" ||
-    e.key === "ArrowUp" ||
-    e.key === "ArrowDown"
-  ) {
-    p1.dx = 0;
-    p1.dy = 0;
+    p1.nextDy = p1.speed;
+    p1.nextDx = 0;
   }
 }
 
 document.addEventListener("keydown", onKeydown);
-document.addEventListener("keyup", onKeyup);
