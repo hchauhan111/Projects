@@ -121,6 +121,21 @@ function createImage(src) {
   return image;
 }
 
+function collisionPelletsWithPlayer() {
+  for (let i = pellets.length - 1; i >= 0; i--) {
+    const pellet = pellets[i];
+    if (
+      Math.hypot(
+        pellet.position.x - p1.position.x,
+        pellet.position.y - p1.position.y
+      ) <
+      p1.radius + pellet.radius
+    ) {
+      pellets.splice(i, 1);
+    }
+  }
+}
+
 map.forEach((row, i) => {
   row.forEach((symbol, j) => {
     switch (symbol) {
@@ -336,6 +351,7 @@ function mainAnimation() {
   cxt.clearRect(0, 0, canvas.width, canvas.height);
   drawMap();
   drawPellets();
+  collisionPelletsWithPlayer();
   p1.update();
   requestAnimationFrame(mainAnimation);
 }
