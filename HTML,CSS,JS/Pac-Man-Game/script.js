@@ -1,11 +1,13 @@
 const canvas = document.getElementById("gameCanvas");
-const score = document.getElementById("score");
-const lives = document.getElementById("lives");
+const scoreEl = document.getElementById("score");
 
 const cxt = canvas.getContext("2d");
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = 600;
+canvas.height = 600;
+
+const scoreIcreament = 10;
+let score = 0;
 
 class Boundary {
   static width = 40;
@@ -132,6 +134,8 @@ function collisionPelletsWithPlayer() {
       p1.radius + pellet.radius
     ) {
       pellets.splice(i, 1);
+      scoreEl.textContent = score;
+      score += scoreIcreament;
     }
   }
 }

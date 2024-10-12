@@ -1,44 +1,16 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
+  overflow: hidden;
+  margin: 0;
+  background-color: black;
+  font-family: "Press Start 2P", cursive;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: black;
-  font-family: "Press Start 2P", cursive; /* Retro font */
-}
-/* 
-h1 {
-  color: #fdfd96;
-  font-family: "Press Start 2P", cursive;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px #ff0000;
+  text-align: center;
 }
 
-canvas {
-  background-color: #000;
-  box-shadow: 0px 0px 15px 5px rgba(255, 255, 0, 0.7);
-}
-
-#game-info {
-  display: flex;
-  justify-content: space-between;
-  width: 400px;
-  margin-top: 10px;
-}
-
-#score {
+#scoreLabel {
   color: white;
   font-size: 18px;
+  text-align: center;
 }
-
-#lives {
-  color: white;
-  font-size: 18px;
-} */
