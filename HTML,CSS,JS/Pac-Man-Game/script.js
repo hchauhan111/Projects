@@ -28,6 +28,21 @@ class Boundary {
   }
 }
 
+class Pellets {
+  constructor({ position }) {
+    this.position = position;
+    this.radius = 3;
+  }
+
+  draw() {
+    cxt.beginPath();
+    cxt.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+    cxt.fillStyle = "white";
+    cxt.fill();
+    cxt.closePath();
+  }
+}
+
 class Player {
   constructor({ position }) {
     this.position = position;
@@ -47,7 +62,7 @@ class Player {
     cxt.closePath();
   }
 
-  collisionDetection({ dx, dy }) {
+  collisionPlayerWithWall({ dx, dy }) {
     let isCollidingWithWalls = false;
     boundaries.forEach((boundary) => {
       if (
@@ -65,11 +80,11 @@ class Player {
   }
 
   move() {
-    if (!this.collisionDetection({ dx: this.nextDx, dy: this.nextDy })) {
+    if (!this.collisionPlayerWithWall({ dx: this.nextDx, dy: this.nextDy })) {
       this.dx = this.nextDx;
       this.dy = this.nextDy;
     }
-    if (!this.collisionDetection({ dx: this.dx, dy: this.dy })) {
+    if (!this.collisionPlayerWithWall({ dx: this.dx, dy: this.dy })) {
       this.position.x += this.dx;
       this.position.y += this.dy;
     }
@@ -97,6 +112,7 @@ const map = [
   ["4", "-", "-", "-", "-", "-", "-", "-", "-", "-", "3"],
 ];
 
+const pellets = [];
 let boundaries = [];
 
 function createImage(src) {
@@ -287,12 +303,26 @@ map.forEach((row, i) => {
           })
         );
         break;
+      case ".":
+        pellets.push(
+          new Pellets({
+            position: {
+              x: j * Boundary.width + Boundary.width / 2,
+              y: i * Boundary.height + Boundary.height / 2,
+            },
+          })
+        );
+        break;
     }
   });
 });
 
 function drawMap() {
   boundaries.forEach((boundary) => boundary.draw());
+}
+
+function drawPellets() {
+  pellets.forEach((pellet) => pellet.draw());
 }
 
 const p1 = new Player({
@@ -305,6 +335,7 @@ const p1 = new Player({
 function mainAnimation() {
   cxt.clearRect(0, 0, canvas.width, canvas.height);
   drawMap();
+  drawPellets();
   p1.update();
   requestAnimationFrame(mainAnimation);
 }
