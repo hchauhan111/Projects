@@ -10,10 +10,10 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #121212;
+  background-color: black;
   font-family: "Press Start 2P", cursive; /* Retro font */
 }
-
+/* 
 h1 {
   color: #fdfd96;
   font-family: "Press Start 2P", cursive;
@@ -41,4 +41,4 @@ canvas {
 #lives {
   color: white;
   font-size: 18px;
-}
+} */
