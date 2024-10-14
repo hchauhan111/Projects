@@ -1,5 +1,14 @@
 const canvas = document.getElementById("gameCanvas");
 const scoreEl = document.getElementById("score");
+const scoreLabel = document.getElementById("scoreLabel");
+
+const startBtn = document.getElementById("startButton");
+
+const deathSound = document.getElementById("death-sound");
+const eatGhostSound = document.getElementById("eatGhost-sound");
+const gameStartSound = document.getElementById("gameStart-sound");
+const munchSound = document.getElementById("munch-sound");
+const pillSound = document.getElementById("pill-sound");
 
 let animationId;
 const cxt = canvas.getContext("2d");
@@ -227,6 +236,7 @@ function collisionPelletsWithPlayer() {
       ) <
       p1.radius + pellet.radius
     ) {
+      munchSound.play();
       pellets.splice(i, 1);
       score += scoreIncrement;
       scoreEl.textContent = score;
@@ -243,6 +253,7 @@ function collisionPowerupWithPlayer() {
       ) <
       p1.radius + powerup.radius
     ) {
+      pillSound.play();
       powerups.splice(i, 1);
       score += powerupIncrement;
       scoreEl.textContent = score;
@@ -544,6 +555,7 @@ function collisionPlayerWithGhost(ghost) {
 }
 
 function endGame() {
+  deathSound.play();
   cancelAnimationFrame(animationId);
   cxt.fillStyle = "red";
   cxt.font = "50px Arial";
@@ -592,6 +604,7 @@ function mainAnimation() {
       endGame();
     }
     if (collisionPlayerWithGhost(ghost) && ghost.vulnerable) {
+      eatGhostSound.play();
       ghosts.splice(i, 1);
     }
     let collisions = [];
@@ -648,8 +661,14 @@ function mainAnimation() {
   if (!gameOver || !gameWin) animationId = requestAnimationFrame(mainAnimation);
 }
 
-mainAnimation();
-
+startBtn.addEventListener("click", () => {
+  startBtn.style.display = "none";
+  canvas.style.display = "block";
+  scoreLabel.style.display = "block";
+  document.body.style.overflow = "hidden";
+  gameStartSound.play();
+  mainAnimation();
+});
 function keyDown(e) {
   switch (e.key) {
     case "ArrowUp":

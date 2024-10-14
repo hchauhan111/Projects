@@ -12,7 +12,15 @@
   </head>
   <body>
     <p id="scoreLabel">Score:<span id="score">0</span></p>
-    <canvas id="gameCanvas"></canvas>
+    <canvas id="gameCanvas" style="display: none"></canvas>
+    <button id="startButton">Start Game</button>
+
+    <!-- Sounds -->
+    <audio id="death-sound" src="sound/death.wav"></audio>
+    <audio id="eatGhost-sound" src="sound/eat_ghost.wav"></audio>
+    <audio id="gameStart-sound" src="sound/game_start.wav"></audio>
+    <audio id="munch-sound" src="sound/munch.wav"></audio>
+    <audio id="pill-sound" src="sound/pill.wav"></audio>
     <script src="script.js"></script>
   </body>
 </html>
