@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Snake Game</h1>
+      <div class="score-board">
+        <span id="score-label">Score: </span>
+        <span class="score">0</span> |
+        <span id="high-score-label">High Score: </span>
+        <span class="highScore">0</span>
+      </div>
+      <canvas id="gameCanvas" width="400" height="400"></canvas>
+    </div>
+
+    <!-- Sounds -->
+    <audio id="eatSound" src="music/food.mp3"></audio>
+    <audio id="gameover" src="music/gameover.mp3"></audio>
+    <audio id="move" src="music/move.mp3"></audio>
+    <audio id="music" src="music/music.mp3" loop></audio>
+
+    <!-- Image -->
+    <img src="img/fruit.jpg" id="fruit" style="display: none" alt="" />
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span id="score-label">Score: </span>
+        <span class="score">0</span> |
+        <span class="high-score-label">High Score: </span>
+        <span class="highScore">0</span>
+        <button id="restart-btn">Restart Game</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
