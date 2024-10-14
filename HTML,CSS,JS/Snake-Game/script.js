@@ -5,10 +5,10 @@ const restartBtn = document.getElementById("restart-btn");
 const myModal = document.getElementById("myModal");
 const fruitImg = document.getElementById("fruit");
 const scoreBoard = document.querySelector(".score-board");
-const music = document.querySelector(".score-board");
-const eatSound = document.querySelector(".score-board");
-const gameover = document.querySelector(".score-board");
-const move = document.querySelector(".score-board");
+const music = document.querySelector("#music");
+const eatSound = document.querySelector("#eatSound");
+const gameover = document.querySelector("#gameover");
+const move = document.querySelector("#move");
 
 const cxt = canvas.getContext("2d");
 
@@ -18,7 +18,7 @@ const snake = {
   body: [{ x: 20, y: 20 }],
   dx: 0,
   dy: 0,
-  speed: 5,
+  speed: 4,
 };
 
 const fruit = {
@@ -62,16 +62,21 @@ function moveSnake() {
 }
 
 function onKeyDown(e) {
+  music.play();
   if (e.key === "ArrowRight" && snake.dx === 0) {
+    move.play();
     snake.dx = snake.speed;
     snake.dy = 0;
   } else if (e.key === "ArrowLeft" && snake.dx === 0) {
+    move.play();
     snake.dx = -snake.speed;
     snake.dy = 0;
   } else if (e.key === "ArrowUp" && snake.dy === 0) {
+    move.play();
     snake.dy = -snake.speed;
     snake.dx = 0;
   } else if (e.key === "ArrowDown" && snake.dy === 0) {
+    move.play();
     snake.dy = snake.speed;
     snake.dx = 0;
   }
@@ -95,6 +100,7 @@ function checkFruitCollision() {
     snake.body[0].y < fruit.y + fruit.h &&
     snake.body[0].y + snake.h > fruit.y
   ) {
+    eatSound.play();
     fruit.x = Math.floor(Math.random() * (canvas.width - 20));
     fruit.y = Math.floor(Math.random() * (canvas.height - 20));
     handleScore();
@@ -118,15 +124,19 @@ function handleScore() {
 }
 
 function gameOver() {
-  cancelAnimationFrame(animeId);
-  document.removeEventListener("keydown", onKeyDown);
-  currScore = 0;
-  highScore[1].textContent = highScoreLocal;
-  openModal();
-  scoreBoard.style.display = "none";
+  if (!isGameOver) {
+    isGameOver = true;
+    gameover.play();
+    cancelAnimationFrame(animeId);
+    document.removeEventListener("keydown", onKeyDown);
+    highScore[1].textContent = highScoreLocal;
+    openModal();
+    scoreBoard.style.display = "none";
+  }
 }
 
 function restartGame() {
+  isGameOver = false;
   snake.body = [{ x: 20, y: 20 }];
   snake.dx = 0;
   snake.dy = 0;
@@ -136,16 +146,20 @@ function restartGame() {
   currScore = 0;
   score[0].textContent = currScore;
   highScore[0].textContent = highScoreLocal;
+  update();
 }
 
+let isGameOver = false;
+
 function update() {
+  if (isGameOver) return;
   clear();
   drawSnake();
   drawFruit();
   moveSnake();
   checkWallCollision();
   checkFruitCollision();
-  animeId = requestAnimationFrame(update);
+  if (!isGameOver) animeId = requestAnimationFrame(update);
 }
 
 function openModal() {
