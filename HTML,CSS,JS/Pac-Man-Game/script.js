@@ -8,6 +8,7 @@ canvas.width = 600;
 canvas.height = 600;
 
 const scoreIncrement = 10;
+const powerupIncrement = 50;
 let score = 0;
 
 class Boundary {
@@ -46,6 +47,20 @@ class Pellets {
   }
 }
 
+class Powerup {
+  constructor({ position }) {
+    this.position = position;
+    this.radius = 8;
+  }
+  draw() {
+    cxt.beginPath();
+    cxt.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+    cxt.fillStyle = "white";
+    cxt.fill();
+    cxt.closePath();
+  }
+}
+
 class Ghost {
   static speed = 2;
   constructor({ position, image, nextDx, nextDy }) {
@@ -56,12 +71,20 @@ class Ghost {
     this.nextDx = nextDx;
     this.nextDy = nextDy;
     this.image = image;
+    this.originalImage = image;
+    this.vulnerableImage = createImage("img/vulnerable-ghost.png");
     this.width = Boundary.width - 5;
     this.height = Boundary.height - 5;
     this.previousCollisions = [];
+    this.vulnerable = false;
   }
 
   draw() {
+    if (this.vulnerable) {
+      this.image = this.vulnerableImage;
+    } else {
+      this.image = this.originalImage;
+    }
     cxt.drawImage(
       this.image,
       this.position.x,
@@ -158,6 +181,8 @@ const map = [
 ];
 
 const pellets = [];
+const powerups = [];
+
 let boundaries = [];
 
 function createImage(src) {
@@ -179,6 +204,28 @@ function collisionPelletsWithPlayer() {
       pellets.splice(i, 1);
       scoreEl.textContent = score;
       score += scoreIncrement;
+    }
+  }
+}
+function collisionPowerupWithPlayer() {
+  for (let i = powerups.length - 1; i >= 0; i--) {
+    const powerup = powerups[i];
+    if (
+      Math.hypot(
+        powerup.position.x - p1.position.x,
+        powerup.position.y - p1.position.y
+      ) <
+      p1.radius + powerup.radius
+    ) {
+      powerups.splice(i, 1);
+      scoreEl.textContent = score;
+      score += powerupIncrement;
+      ghosts.forEach((ghost, i) => {
+        ghost.vulnerable = true;
+        setTimeout(() => {
+          ghost.vulnerable = false;
+        }, 4000);
+      });
     }
   }
 }
@@ -375,6 +422,15 @@ map.forEach((row, i) => {
           })
         );
         break;
+      case "p":
+        powerups.push(
+          new Powerup({
+            position: {
+              x: j * Boundary.width + Boundary.width / 2,
+              y: i * Boundary.height + Boundary.height / 2,
+            },
+          })
+        );
     }
   });
 });
@@ -385,6 +441,9 @@ function drawMap() {
 
 function drawPellets() {
   pellets.forEach((pellet) => pellet.draw());
+}
+function drawpowerups() {
+  powerups.forEach((powerup) => powerup.draw());
 }
 
 const p1 = new Player({
@@ -478,13 +537,18 @@ function mainAnimation() {
   cxt.clearRect(0, 0, canvas.width, canvas.height);
   drawMap();
   drawPellets();
+  drawpowerups();
   collisionPelletsWithPlayer();
+  collisionPowerupWithPlayer();
   p1.update();
-  ghosts.forEach((ghost) => {
+  ghosts.forEach((ghost, i) => {
     ghost.update();
-    if (collisionPlayerWithGhost(ghost)) {
+    if (collisionPlayerWithGhost(ghost) && !ghost.vulnerable) {
       gameOver = true;
       endGame();
+    }
+    if (collisionPlayerWithGhost(ghost)) {
+      ghosts.splice(i, 1);
     }
     let collisions = [];
     if (collisionGhostWithWalls(ghost, { dx: 0, dy: ghost.speed }))
