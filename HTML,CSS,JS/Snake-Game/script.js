@@ -10,6 +10,8 @@ const eatSound = document.querySelector("#eatSound");
 const gameover = document.querySelector("#gameover");
 const move = document.querySelector("#move");
 
+music.volume = 0.5;
+
 const cxt = canvas.getContext("2d");
 
 const snake = {
