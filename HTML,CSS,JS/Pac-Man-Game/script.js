@@ -1,28 +1,35 @@
+// Get references to various elements in the HTML
 const canvas = document.getElementById("gameCanvas");
 const scoreEl = document.getElementById("score");
 const scoreLabel = document.getElementById("scoreLabel");
-
 const startBtn = document.getElementById("startButton");
 
+// Get references to audio elements for different game sounds
 const deathSound = document.getElementById("death-sound");
 const eatGhostSound = document.getElementById("eatGhost-sound");
 const gameStartSound = document.getElementById("gameStart-sound");
 const munchSound = document.getElementById("munch-sound");
 const pillSound = document.getElementById("pill-sound");
 
+// Declare variables for the animation and canvas context
 let animationId;
 const cxt = canvas.getContext("2d");
 
+// Set canvas dimensions
 canvas.width = 600;
 canvas.height = 600;
 
+// Constants for score increments
 const scoreIncrement = 10;
 const powerupIncrement = 50;
 let score = 0;
 
+// Boundary class for the walls/obstacles in the game
 class Boundary {
   static width = 40;
   static height = 40;
+
+  // Constructor to set the position and image of the boundary
   constructor({ position, image }) {
     this.position = position;
     this.width = 40;
@@ -30,6 +37,7 @@ class Boundary {
     this.image = image;
   }
 
+  // Draw the boundary on the canvas
   draw() {
     cxt.drawImage(
       this.image,
@@ -41,12 +49,14 @@ class Boundary {
   }
 }
 
+// Pellets class for the small dots the player can eat
 class Pellets {
   constructor({ position }) {
     this.position = position;
     this.radius = 3;
   }
 
+  // Draw the pellet on the canvas
   draw() {
     cxt.beginPath();
     cxt.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
@@ -56,11 +66,14 @@ class Pellets {
   }
 }
 
+// Powerup class for the larger dots that give special abilities
 class Powerup {
   constructor({ position }) {
     this.position = position;
     this.radius = 8;
   }
+
+  // Draw the powerup on the canvas
   draw() {
     cxt.beginPath();
     cxt.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
@@ -70,6 +83,7 @@ class Powerup {
   }
 }
 
+// Ghost class for enemy characters
 class Ghost {
   static speed = 2;
   constructor({ position, image, nextDx, nextDy }) {
@@ -88,6 +102,7 @@ class Ghost {
     this.vulnerable = false;
   }
 
+  // Draw the ghost on the canvas
   draw() {
     if (this.vulnerable) {
       this.image = this.vulnerableImage;
@@ -103,7 +118,9 @@ class Ghost {
     );
   }
 
+  // Move the ghost according to the current direction
   move() {
+    // Check if ghost is hitting a wall before changing direction
     if (!collisionGhostWithWalls(this, { dx: this.nextDx, dy: this.nextDy })) {
       this.dx = this.nextDx;
       this.dy = this.nextDy;
@@ -114,12 +131,14 @@ class Ghost {
     }
   }
 
+  // Update ghost position and redraw
   update() {
     this.draw();
     this.move();
   }
 }
 
+// Player class for the main character
 class Player {
   constructor({ position }) {
     this.position = position;
@@ -133,6 +152,7 @@ class Player {
     this.mouthDirection = 1;
   }
 
+  // Draw the player on the canvas, including animation for the mouth
   draw() {
     let rotation = 0;
     if (this.dx > 0) rotation = 0;
@@ -140,6 +160,7 @@ class Player {
     else if (this.dy > 0) rotation = Math.PI / 2;
     else if (this.dy < 0) rotation = (3 * Math.PI) / 2;
 
+    // Update mouth opening for animation effect
     this.mouthAngle += 0.02 * this.mouthDirection;
     if (this.mouthAngle > 0.25 || this.mouthAngle < 0.05) {
       this.mouthDirection *= -1;
@@ -149,6 +170,7 @@ class Player {
     cxt.translate(this.position.x, this.position.y);
     cxt.rotate(rotation);
 
+    // Draw the player with an open mouth
     cxt.beginPath();
     cxt.arc(
       0,
@@ -165,6 +187,7 @@ class Player {
     cxt.restore();
   }
 
+  // Check if the player is colliding with walls
   collisionPlayerWithWall({ dx, dy }) {
     let isCollidingWithWalls = false;
     boundaries.forEach((boundary) => {
@@ -182,6 +205,7 @@ class Player {
     return isCollidingWithWalls;
   }
 
+  // Move the player if there is no wall in the way
   move() {
     if (!this.collisionPlayerWithWall({ dx: this.nextDx, dy: this.nextDy })) {
       this.dx = this.nextDx;
@@ -193,11 +217,14 @@ class Player {
     }
   }
 
+  // Update player position and redraw
   update() {
     this.draw();
     this.move();
   }
 }
+
+// Map layout definition (array of symbols)
 
 const map = [
   ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
@@ -215,17 +242,19 @@ const map = [
   ["4", "-", "-", "-", "-", "-", "-", "-", "-", "-", "3"],
 ];
 
+// Arrays to store pellets, powerups, and boundaries
 const pellets = [];
 const powerups = [];
-
 let boundaries = [];
 
+// Helper function to create an image element for sprites
 function createImage(src) {
   const image = new Image();
   image.src = src;
   return image;
 }
 
+// Function to detect collisions between the player and pellets
 function collisionPelletsWithPlayer() {
   for (let i = pellets.length - 1; i >= 0; i--) {
     const pellet = pellets[i];
@@ -243,6 +272,8 @@ function collisionPelletsWithPlayer() {
     }
   }
 }
+
+// Function to detect collisions between the player and powerups
 function collisionPowerupWithPlayer() {
   for (let i = powerups.length - 1; i >= 0; i--) {
     const powerup = powerups[i];
@@ -261,12 +292,11 @@ function collisionPowerupWithPlayer() {
         ghost.vulnerable = true;
         setTimeout(() => {
           ghost.vulnerable = false;
-        }, 4000);
+        }, 5000);
       });
     }
   }
 }
-
 map.forEach((row, i) => {
   row.forEach((symbol, j) => {
     switch (symbol) {
