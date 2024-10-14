@@ -120,14 +120,40 @@ class Player {
     this.dy = 0;
     this.nextDx = 0;
     this.nextDy = 0;
+    this.mouthAngle = 0.25;
+    this.mouthDirection = 1;
   }
 
   draw() {
+    let rotation = 0;
+    if (this.dx > 0) rotation = 0;
+    else if (this.dx < 0) rotation = Math.PI;
+    else if (this.dy > 0) rotation = Math.PI / 2;
+    else if (this.dy < 0) rotation = (3 * Math.PI) / 2;
+
+    this.mouthAngle += 0.02 * this.mouthDirection;
+    if (this.mouthAngle > 0.25 || this.mouthAngle < 0.05) {
+      this.mouthDirection *= -1;
+    }
+
+    cxt.save();
+    cxt.translate(this.position.x, this.position.y);
+    cxt.rotate(rotation);
+
     cxt.beginPath();
-    cxt.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+    cxt.arc(
+      0,
+      0,
+      this.radius,
+      this.mouthAngle * Math.PI,
+      (2 - this.mouthAngle) * Math.PI
+    );
+    cxt.lineTo(0, 0);
     cxt.fillStyle = "yellow";
     cxt.fill();
     cxt.closePath();
+
+    cxt.restore();
   }
 
   collisionPlayerWithWall({ dx, dy }) {
@@ -202,8 +228,8 @@ function collisionPelletsWithPlayer() {
       p1.radius + pellet.radius
     ) {
       pellets.splice(i, 1);
-      scoreEl.textContent = score;
       score += scoreIncrement;
+      scoreEl.textContent = score;
     }
   }
 }
@@ -218,9 +244,9 @@ function collisionPowerupWithPlayer() {
       p1.radius + powerup.radius
     ) {
       powerups.splice(i, 1);
-      scoreEl.textContent = score;
       score += powerupIncrement;
-      ghosts.forEach((ghost, i) => {
+      scoreEl.textContent = score;
+      ghosts.forEach((ghost) => {
         ghost.vulnerable = true;
         setTimeout(() => {
           ghost.vulnerable = false;
