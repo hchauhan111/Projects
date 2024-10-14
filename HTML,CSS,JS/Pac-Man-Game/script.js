@@ -530,15 +530,33 @@ function endGame() {
     }
   }, 3000);
 }
+function gameWon() {
+  cancelAnimationFrame(animationId);
+  cxt.fillStyle = "lightgreen";
+  cxt.font = "50px Arial";
+  cxt.fillText("Hurray! You Won", canvas.width / 2 - 150, canvas.height / 2);
+  setTimeout(() => {
+    let q = confirm("Restart");
+    if (q) {
+      location.reload();
+    }
+  }, 3000);
+}
 
 let gameOver = false;
+let gameWin = false;
 function mainAnimation() {
   if (gameOver) return;
+  if (gameWin) return;
   cxt.clearRect(0, 0, canvas.width, canvas.height);
   drawMap();
   drawPellets();
   drawpowerups();
   collisionPelletsWithPlayer();
+  if (pellets.length === 0) {
+    gameWin = true;
+    gameWon();
+  }
   collisionPowerupWithPlayer();
   p1.update();
   ghosts.forEach((ghost, i) => {
@@ -547,7 +565,7 @@ function mainAnimation() {
       gameOver = true;
       endGame();
     }
-    if (collisionPlayerWithGhost(ghost)) {
+    if (collisionPlayerWithGhost(ghost) && ghost.vulnerable) {
       ghosts.splice(i, 1);
     }
     let collisions = [];
@@ -601,7 +619,7 @@ function mainAnimation() {
       ghost.previousCollisions = [];
     }
   });
-  if (!gameOver) animationId = requestAnimationFrame(mainAnimation);
+  if (!gameOver || !gameWin) animationId = requestAnimationFrame(mainAnimation);
 }
 
 mainAnimation();
