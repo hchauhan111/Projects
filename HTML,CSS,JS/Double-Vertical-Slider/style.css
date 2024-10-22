@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.left-slide {
+  height: 100%;
+  width: 35%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.left-slide > div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.left-slide h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.left-slide p {
+  font-size: 20px;
+  color: #ddd;
+  letter-spacing: 1px;
+}
+
+.right-slide {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 35%;
+  width: 65%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.right-slide > div {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.right-slide > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  height: 51px;
+  width: 51px;
+}
+
+button:hover {
+  color: #222;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button i {
+  transition: transform 0.3s ease;
+}
+
+button:focus {
+  outline: none;
+}
+
+.slider-container .action-buttons button {
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  z-index: 100;
+  transform: translateY(-50%);
+}
+
+.slider-container .action-buttons .down-button {
+  transform: translateX(-100%);
+}
+
+.slider-container .action-buttons .up-button {
+  transform: translateY(-100%);
+}
