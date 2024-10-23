@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f6f7;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 360px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  height: 220px;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.card-header img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.card-content {
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-title {
+  height: 24px;
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.card-excerpt {
+  color: #777;
+  margin: 10px 0 20px;
+  font-size: 0.9rem;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 48px;
+  width: 48px;
+  border: 2px solid #ddd;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 12px;
+}
+
+.author-info strong {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.author-info small {
+  color: #aaa;
+  margin-top: 5px;
+  font-size: 0.75rem;
+}
+
+.animated-bg {
+  background-image: linear-gradient(
+    to right,
+    #d1e2f3 0%,
+    #e8effa 20%,
+    #d1e2f3 40%,
+    #d1e2f3 100%
+  );
+  background-size: 200% 100%;
+  animation: bgPos 1s linear infinite;
+}
+
+.animated-bg-text {
+  border-radius: 50px;
+  display: inline-block;
+  margin: 0;
+  height: 12px;
+  width: 100%;
+}
+
+@keyframes bgPos {
+  0% {
+    background-position: 50% 0;
+  }
+
+  100% {
+    background-position: -150% 0;
+  }
+}
+
+.profile-img img {
+  border-radius: 50%;
+}
